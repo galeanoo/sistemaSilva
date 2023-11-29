@@ -87,4 +87,13 @@ public class Cliente_DAO_Nsg extends DAO_Abstract {
         session.getTransaction().commit();
         return results;
     }
+    
+    public List listaCli(String nomeNsg) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(ClienteNsg.class);
+        criteria.add(Restrictions.eq("nomeNsg", nomeNsg));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
 }

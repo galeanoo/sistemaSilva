@@ -5,7 +5,7 @@
  */
 package view;
 
-import bean.UsuariosNsg;
+import bean.VendaProdutoNsg;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -13,17 +13,16 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author u09229145165
  */
-public class UsuariosControleNsg extends AbstractTableModel{
+public class VendaProdutoControleNsg extends AbstractTableModel{
     
     List lista;
     
     public void setList(List lista){
     this.lista = lista;
     this.fireTableDataChanged();
-    
     };
-    public UsuariosNsg getBean(int row){
-    return (UsuariosNsg)lista.get(row);
+    public VendaProdutoNsg getBean(int row){
+    return (VendaProdutoNsg)lista.get(row);
     }
     
     @Override
@@ -39,18 +38,18 @@ return 4;
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
        
-        UsuariosNsg usuariosNsg = (UsuariosNsg) lista.get(rowIndex);
+        VendaProdutoNsg vendaNsg = (VendaProdutoNsg) lista.get(rowIndex);
         if (columnIndex == 0){
-        return usuariosNsg.getIdUsuariosNsg();
+        return vendaNsg.getIdVendaProdutoNsg();
         }
         if (columnIndex == 1){
-        return usuariosNsg.getNomeNsg();
+        return vendaNsg.getClienteNsg();
         }
         if (columnIndex == 2){
-        return usuariosNsg.getApelidoNsg();
+        return vendaNsg.getVendedorNsg();
         }
         if (columnIndex == 3){
-        return usuariosNsg.getCpfNsg();
+        return vendaNsg.getQuantidadeNsg();
         }
         return "";
     }
@@ -61,13 +60,13 @@ return 4;
         return "id";
         }
         if (column == 1){
-        return "nome";
+        return "cliente";
         }
         if (column == 2){
-        return "apelido";
+        return "vendedor";
         }
         if (column == 3){
-        return "cpf";
+        return "quantidade";
         }
                
         return "";

@@ -25,17 +25,19 @@ public class VendaProdutoNsg  implements java.io.Serializable {
      private ProdutoNsg produtoNsg;
      private VendaNsg vendaNsg;
      private VendedorNsg vendedorNsg;
-     private int quantidadeNsg;
+     private ClienteNsg clienteNsg;
+     private String quantidadeNsg;
      private String valorUnitNsg;
 
     public VendaProdutoNsg() {
     }
 
-    public VendaProdutoNsg(int idVendaProdutoNsg, ProdutoNsg produtoNsg, VendaNsg vendaNsg, VendedorNsg vendedorNsg, int quantidadeNsg, String valorUnitNsg) {
+    public VendaProdutoNsg(int idVendaProdutoNsg, ProdutoNsg produtoNsg, VendaNsg vendaNsg, VendedorNsg vendedorNsg, ClienteNsg clienteNsg, String quantidadeNsg, String valorUnitNsg) {
        this.idVendaProdutoNsg = idVendaProdutoNsg;
        this.produtoNsg = produtoNsg;
        this.vendaNsg = vendaNsg;
        this.vendedorNsg = vendedorNsg;
+       this.clienteNsg = clienteNsg;
        this.quantidadeNsg = quantidadeNsg;
        this.valorUnitNsg = valorUnitNsg;
     }
@@ -81,14 +83,24 @@ public class VendaProdutoNsg  implements java.io.Serializable {
     public void setVendedorNsg(VendedorNsg vendedorNsg) {
         this.vendedorNsg = vendedorNsg;
     }
+    
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="cliente_nsg", nullable=false)
+    public ClienteNsg getClienteNsg() {
+        return this.clienteNsg;
+    }
+    
+    public void setClienteNsg(ClienteNsg clienteNsg) {
+        this.clienteNsg = clienteNsg;
+    }
 
     
-    @Column(name="quantidade_nsg", nullable=false)
-    public int getQuantidadeNsg() {
+    @Column(name="quantidade_nsg", nullable=false, length=80)
+    public String getQuantidadeNsg() {
         return this.quantidadeNsg;
     }
     
-    public void setQuantidadeNsg(int quantidadeNsg) {
+    public void setQuantidadeNsg(String quantidadeNsg) {
         this.quantidadeNsg = quantidadeNsg;
     }
 

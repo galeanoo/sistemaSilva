@@ -32,13 +32,13 @@ public class VendaNsg  implements java.io.Serializable {
      private VendedorNsg vendedorNsg;
      private Date dataNsg;
      private String totalVendaNsg;
-     private int unidadeNsg;
+     private String unidadeNsg;
 
     public VendaNsg() {
     }
 
 	
-    public VendaNsg(int idVendaNsg, ClienteNsg clienteNsg, VendedorNsg vendedorNsg, Date dataNsg, String totalVendaNsg, int unidadeNsg) {
+    public VendaNsg(int idVendaNsg, ClienteNsg clienteNsg, VendedorNsg vendedorNsg, Date dataNsg, String totalVendaNsg, String unidadeNsg) {
         this.idVendaNsg = idVendaNsg;
         this.clienteNsg = clienteNsg;
         this.vendedorNsg = vendedorNsg;
@@ -99,12 +99,12 @@ public class VendaNsg  implements java.io.Serializable {
         this.totalVendaNsg = totalVendaNsg;
     }
     
-    @Column(name="unidade_nsg", nullable=false)
-    public int getUnidadeNsg() {
+    @Column(name="unidade_nsg", nullable=false, length=80)
+    public String getUnidadeNsg() {
         return this.unidadeNsg;
     }
     
-    public void setUnidadeNsg(int unidadeNsg) {
+    public void setUnidadeNsg(String unidadeNsg) {
         this.unidadeNsg = unidadeNsg;
     }
 }

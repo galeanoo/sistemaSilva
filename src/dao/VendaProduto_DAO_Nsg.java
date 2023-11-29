@@ -8,6 +8,7 @@ package dao;
 import bean.VendaProdutoNsg;
 import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -59,5 +60,14 @@ public class VendaProduto_DAO_Nsg extends DAO_Abstract {
         session.getTransaction().commit();
         return lista;
     }
+    
+//    public List listProduto(){
+//        session.beginTransaction();
+//        Criteria criteria = session.createCriteria(VendaProdutoNsg.class);
+//        criteria.add(Restrictions.eq("idVendaProdutoNsg", idVendaProdutoNsg, MatchMode.ANYWHERE));
+//        List results = criteria.list();
+//        session.getTransaction().commit();
+//        return results;
+//    }
     
 }
