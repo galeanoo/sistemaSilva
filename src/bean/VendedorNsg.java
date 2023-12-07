@@ -16,8 +16,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="vendedor_nsg"
-//    ,catalog="db_nayara_silva"
-    ,catalog="test"
+    ,catalog="db_nayara_silva"
+//    ,catalog="test"
 )
 public class VendedorNsg  implements java.io.Serializable {
 
@@ -100,6 +100,22 @@ public class VendedorNsg  implements java.io.Serializable {
     
     public void setGeneroNsg(int generoNsg) {
         this.generoNsg = generoNsg;
+    }
+    
+    @Override
+    public String toString() {
+        return getNomeNsg();
+    }
+
+    public boolean equals (Object object) {
+    if (object instanceof VendedorNsg) {
+        VendedorNsg vendedorNsg = (VendedorNsg) object;
+        
+        if (this.getNomeNsg() == vendedorNsg.getNomeNsg()){
+            return true;
+        }
+    }
+    return false;
     }
 }
 

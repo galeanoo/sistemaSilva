@@ -49,7 +49,7 @@ public class JDlgVendaPesquisaNsg extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jBtnIncluir_Nsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/05 - ok.png"))); // NOI18N
-        jBtnIncluir_Nsg.setText("Incluir");
+        jBtnIncluir_Nsg.setText("Ok");
         jBtnIncluir_Nsg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnIncluir_NsgActionPerformed(evt);

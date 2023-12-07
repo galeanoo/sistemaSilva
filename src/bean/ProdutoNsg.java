@@ -16,15 +16,15 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="produto_nsg"
-//    ,catalog="db_nayara_silva"
-    ,catalog="test"
+    ,catalog="db_nayara_silva"
+//    ,catalog="test"
 )
 public class ProdutoNsg  implements java.io.Serializable {
 
 
      private int idProdutoNsg;
-     private String valorUnitNsg;
-     private int saborNsg;
+     private double valorUnitNsg;
+     private String saborNsg;
      private String unidadeNsg;
      private int massaNsg;
      private int modoNsg;
@@ -35,7 +35,7 @@ public class ProdutoNsg  implements java.io.Serializable {
     }
 
 	
-    public ProdutoNsg(int idProdutoNsg, String valorUnitNsg, int saborNsg, String unidadeNsg, int massaNsg, int modoNsg, int tamanhoNsg, String retirarNsg) {
+    public ProdutoNsg(int idProdutoNsg, double valorUnitNsg, String saborNsg, String unidadeNsg, int massaNsg, int modoNsg, int tamanhoNsg, String retirarNsg) {
         this.idProdutoNsg = idProdutoNsg;
         this.valorUnitNsg = valorUnitNsg;
         this.saborNsg = saborNsg;
@@ -60,21 +60,21 @@ public class ProdutoNsg  implements java.io.Serializable {
 
     
     @Column(name="valor_unit_nsg", nullable=false, length=80)
-    public String getValorUnitNsg() {
+    public double getValorUnitNsg() {
         return this.valorUnitNsg;
     }
     
-    public void setValorUnitNsg(String valorUnitNsg) {
+    public void setValorUnitNsg(double valorUnitNsg) {
         this.valorUnitNsg = valorUnitNsg;
     }
 
     
-    @Column(name="sabor_nsg", nullable=false)
-    public int getSaborNsg() {
+    @Column(name="sabor_nsg", nullable=false, length=80)
+    public String getSaborNsg() {
         return this.saborNsg;
     }
     
-    public void setSaborNsg(int saborNsg) {
+    public void setSaborNsg(String saborNsg) {
         this.saborNsg = saborNsg;
     }
 
@@ -127,6 +127,24 @@ public class ProdutoNsg  implements java.io.Serializable {
     public void setRetirarNsg(String retirarNsg) {
         this.retirarNsg = retirarNsg;
     }
-}
+    
+    @Override
+    public String toString() {
+        return getSaborNsg();
+    }
+
+    
+    
+    public boolean equals (Object object) {
+    if (object instanceof ProdutoNsg) {
+        ProdutoNsg produtoNsg = (ProdutoNsg) object;
+        
+        if (this.getIdProdutoNsg() == produtoNsg.getIdProdutoNsg()){
+            return true;
+        }
+    }
+    return false;
+    }}
+
 
 

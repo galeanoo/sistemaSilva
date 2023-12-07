@@ -21,8 +21,8 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name="venda_nsg"
-//    ,catalog="db_nayara_silva"
-    ,catalog="test"
+    ,catalog="db_nayara_silva"
+//    ,catalog="test"
 )
 public class VendaNsg  implements java.io.Serializable {
 

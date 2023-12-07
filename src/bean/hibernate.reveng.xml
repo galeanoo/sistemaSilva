@@ -42,10 +42,10 @@ Contributor(s):
 <hibernate-reverse-engineering>
     
 <!-- IFMS -->
-<!--  <schema-selection match-catalog="db_nayara_silva"/>-->
+  <schema-selection match-catalog="db_nayara_silva"/>
 
 <!-- LOCAL -->
-  <schema-selection match-catalog="test"/>
+<!--  <schema-selection match-catalog="test"/>-->
   
   <table-filter match-name="vendedor_nsg"/>
   <table-filter match-name="produto_nsg"/>

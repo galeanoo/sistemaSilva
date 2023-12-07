@@ -36,8 +36,8 @@ public class JDlgProdutoIANsg extends javax.swing.JDialog {
         ProdutoNsg produtoNsg = new ProdutoNsg();
         
         produtoNsg.setIdProdutoNsg(Util.strInt(jTxtCodigo_Nsg.getText()));
-        produtoNsg.setValorUnitNsg(jFmtValorunit_Nsg.getText());
-        produtoNsg.setSaborNsg(jCboSabor_Nsg.getSelectedIndex());
+        produtoNsg.setValorUnitNsg(Util.strDouble(jFmtValorunit_Nsg.getText()));
+        produtoNsg.setSaborNsg(jTxtSabor_Nsg.getText());
         produtoNsg.setUnidadeNsg(jTxtUnidade_Nsg.getText());
         produtoNsg.setMassaNsg(jCboMassa_Nsg.getSelectedIndex());
         produtoNsg.setModoNsg(jCboModo_Nsg.getSelectedIndex());
@@ -57,8 +57,8 @@ public class JDlgProdutoIANsg extends javax.swing.JDialog {
         String id = String.valueOf(produtoNsg.getIdProdutoNsg());
         
         jTxtCodigo_Nsg.setText(id);
-        jFmtValorunit_Nsg.setText(produtoNsg.getValorUnitNsg());
-        jCboSabor_Nsg.setSelectedIndex(produtoNsg.getSaborNsg());
+        jFmtValorunit_Nsg.setText(Util.DoubleStr(produtoNsg.getValorUnitNsg()));
+        jTxtSabor_Nsg.setText(produtoNsg.getSaborNsg());
         jTxtUnidade_Nsg.setText(produtoNsg.getUnidadeNsg());
         jCboMassa_Nsg.setSelectedIndex(produtoNsg.getMassaNsg());
         jCboModo_Nsg.setSelectedIndex(produtoNsg.getModoNsg());
@@ -80,6 +80,7 @@ public class JDlgProdutoIANsg extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel10 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jTxtCodigo_Nsg = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -95,11 +96,13 @@ public class JDlgProdutoIANsg extends javax.swing.JDialog {
         jLabel8 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jCboSabor_Nsg = new javax.swing.JComboBox<>();
         jCboMassa_Nsg = new javax.swing.JComboBox<>();
         jCboModo_Nsg = new javax.swing.JComboBox<>();
         jCboTamanho_Nsg = new javax.swing.JComboBox<>();
         jChbRetirar_Nsg = new javax.swing.JCheckBox();
+        jTxtSabor_Nsg = new javax.swing.JTextField();
+
+        jLabel10.setText("jLabel10");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -150,8 +153,6 @@ public class JDlgProdutoIANsg extends javax.swing.JDialog {
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/14 - compra.png"))); // NOI18N
         jLabel9.setText("Cadastrar Produtos");
 
-        jCboSabor_Nsg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Carne", "Queijo", "Frango", "Palmito" }));
-
         jCboMassa_Nsg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mandioca", "Fubá", "Integral", "Frango" }));
 
         jCboModo_Nsg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Massa crua", "Frito", "Assado", " " }));
@@ -168,6 +169,24 @@ public class JDlgProdutoIANsg extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jTxtCodigo_Nsg, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jFmtValorunit_Nsg, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jTxtUnidade_Nsg, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jTxtSabor_Nsg, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))
                     .addComponent(jLabel9)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,24 +203,8 @@ public class JDlgProdutoIANsg extends javax.swing.JDialog {
                         .addGap(54, 54, 54)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
-                            .addComponent(jChbRetirar_Nsg)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jTxtCodigo_Nsg, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jFmtValorunit_Nsg, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jTxtUnidade_Nsg, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jCboSabor_Nsg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jChbRetirar_Nsg))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,11 +228,10 @@ public class JDlgProdutoIANsg extends javax.swing.JDialog {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jTxtUnidade_Nsg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jCboSabor_Nsg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jTxtSabor_Nsg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(26, 26, 26)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,14 +265,14 @@ public class JDlgProdutoIANsg extends javax.swing.JDialog {
     Produto_DAO_Nsg produto_DAO_Nsg = new Produto_DAO_Nsg();
     produto_DAO_Nsg.insert(produtoNsg);
     
-    Util.limparCampos(jTxtCodigo_Nsg, jFmtValorunit_Nsg, jCboSabor_Nsg, jTxtUnidade_Nsg, jCboMassa_Nsg, jCboModo_Nsg, jCboTamanho_Nsg, jChbRetirar_Nsg);
+    Util.limparCampos(jTxtCodigo_Nsg, jFmtValorunit_Nsg, jTxtSabor_Nsg, jTxtUnidade_Nsg, jCboMassa_Nsg, jCboModo_Nsg, jCboTamanho_Nsg, jChbRetirar_Nsg);
     Util.mensagem("incluido");
     }//GEN-LAST:event_jBtnIncluir_NsgActionPerformed
 
     private void jBtnCancelar_NsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelar_NsgActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        Util.limparCampos(jTxtCodigo_Nsg, jFmtValorunit_Nsg, jCboSabor_Nsg, jTxtUnidade_Nsg, jCboMassa_Nsg, jCboModo_Nsg, jCboTamanho_Nsg, jChbRetirar_Nsg);
+        Util.limparCampos(jTxtCodigo_Nsg, jFmtValorunit_Nsg, jTxtSabor_Nsg, jTxtUnidade_Nsg, jCboMassa_Nsg, jCboModo_Nsg, jCboTamanho_Nsg, jChbRetirar_Nsg);
         Util.mensagem("Operação Cancelada");
     }//GEN-LAST:event_jBtnCancelar_NsgActionPerformed
 
@@ -325,11 +327,11 @@ public class JDlgProdutoIANsg extends javax.swing.JDialog {
     private javax.swing.JButton jBtnIncluir_Nsg;
     private javax.swing.JComboBox<String> jCboMassa_Nsg;
     private javax.swing.JComboBox<String> jCboModo_Nsg;
-    private javax.swing.JComboBox<String> jCboSabor_Nsg;
     private javax.swing.JComboBox<String> jCboTamanho_Nsg;
     private javax.swing.JCheckBox jChbRetirar_Nsg;
     private javax.swing.JTextField jFmtValorunit_Nsg;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -340,6 +342,7 @@ public class JDlgProdutoIANsg extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTxtCodigo_Nsg;
+    private javax.swing.JTextField jTxtSabor_Nsg;
     private javax.swing.JTextField jTxtUnidade_Nsg;
     // End of variables declaration//GEN-END:variables
 }

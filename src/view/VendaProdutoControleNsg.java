@@ -20,7 +20,8 @@ public class VendaProdutoControleNsg extends AbstractTableModel{
     public void setList(List lista){
     this.lista = lista;
     this.fireTableDataChanged();
-    };
+    }
+    
     public VendaProdutoNsg getBean(int row){
     return (VendaProdutoNsg)lista.get(row);
     }
@@ -43,15 +44,30 @@ return 4;
         return vendaNsg.getIdVendaProdutoNsg();
         }
         if (columnIndex == 1){
-        return vendaNsg.getClienteNsg();
+        return vendaNsg.getProdutoNsg();
         }
         if (columnIndex == 2){
-        return vendaNsg.getVendedorNsg();
-        }
-        if (columnIndex == 3){
         return vendaNsg.getQuantidadeNsg();
         }
+        if (columnIndex == 3){
+        return vendaNsg.getValorUnitNsg();
+        }
         return "";
+    }
+    
+    public void addBean(VendaProdutoNsg vendaProdutoNsg) {
+            lista.add(vendaProdutoNsg);
+            this.fireTableDataChanged();
+    }
+    
+    public void removeBean(int index) {
+            lista.remove(index);
+            this.fireTableDataChanged();
+    }
+    
+    public void updateBean(int index, VendaProdutoNsg vendaProdutoNsg){
+        lista.set(index, vendaProdutoNsg);
+        this.fireTableDataChanged();
     }
     
     @Override
@@ -60,13 +76,13 @@ return 4;
         return "id";
         }
         if (column == 1){
-        return "cliente";
+        return "produto";
         }
         if (column == 2){
-        return "vendedor";
+        return "quantidade";
         }
         if (column == 3){
-        return "quantidade";
+        return "valor unitario";
         }
                
         return "";

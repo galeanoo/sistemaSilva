@@ -31,6 +31,7 @@ public class JDlgVendaNsg extends javax.swing.JDialog {
     private boolean incluindo;
     Venda_DAO_Nsg venda_DAO_Nsg;
     VendaProduto_DAO_Nsg vendaProduto_DAO_Nsg;
+    VendaProdutoNsg vendaProdutoNsg;
     VendaNsg vendaNsg;
     JDlgVendaProdutoNsg jDlgVendaProdutoNsg;
     VendaProdutoControleNsg vendaProdutoControleNsg;
@@ -45,15 +46,15 @@ public class JDlgVendaNsg extends javax.swing.JDialog {
         initComponents();
         setTitle("Venda");
         setLocationRelativeTo(null);
-        Util.habilitar(false, jBtnExcluir_Nsg, jBtnAlterar_Nsg, jBtnConfirmar_Nsg, jBtnCancelar_Nsg, jTxtNumVenda_Nsg, jFmtData_Nsg, jCboCliente_Nsg, jCboVendedor_Nsg, jTxtUnidade_Nsg, jTxtTotal_Nsg);
+        Util.habilitar(false, jBtnExcluir_Nsg2, jBtnAlterar_Nsg2, jBtnIncluir_Nsg2, jBtnExcluir_Nsg, jBtnAlterar_Nsg, jBtnConfirmar_Nsg, jBtnCancelar_Nsg, jTxtNumVenda_Nsg, jFmtData_Nsg, jCboCliente_Nsg, jCboVendedor_Nsg, jTxtUnidade_Nsg, jTxtTotal_Nsg);
         Util.habilitar(true, jBtnIncluir_Nsg, jBtnPesquisar_Nsg);
         Util.limparCampos(jTxtNumVenda_Nsg, jFmtData_Nsg, jCboCliente_Nsg, jCboVendedor_Nsg, jTxtUnidade_Nsg, jTxtTotal_Nsg);
         venda_DAO_Nsg = new Venda_DAO_Nsg();
-        //List lista = new ArrayList();
+        List lista = new ArrayList();
         
         vendaProduto_DAO_Nsg = new VendaProduto_DAO_Nsg();
         vendaProdutoControleNsg = new VendaProdutoControleNsg();
-        List lista = vendaProduto_DAO_Nsg.listAll();
+        //List lista = vendaProduto_DAO_Nsg.listAll();
         vendaProdutoControleNsg.setList(lista);
         jTable1.setModel(vendaProdutoControleNsg);
         
@@ -102,6 +103,7 @@ public class JDlgVendaNsg extends javax.swing.JDialog {
     
     public void beanView(VendaNsg vendaNsg) {
         String id = String.valueOf(vendaNsg.getIdVendaNsg());
+        this.vendaNsg = vendaNsg;
        
         jTxtNumVenda_Nsg.setText(id);
         jCboCliente_Nsg.setSelectedItem(vendaNsg.getClienteNsg());
@@ -110,6 +112,15 @@ public class JDlgVendaNsg extends javax.swing.JDialog {
         jFmtData_Nsg.setText(formato.format(vendaNsg.getDataNsg()));
         jTxtUnidade_Nsg.setText(vendaNsg.getUnidadeNsg());
         jTxtTotal_Nsg.setText(vendaNsg.getTotalVendaNsg());
+        
+        VendaProduto_DAO_Nsg vendaProduto_DAO_Nsg = new VendaProduto_DAO_Nsg();
+        List listaProd = (List) vendaProduto_DAO_Nsg.listProduto(vendaNsg);
+        vendaProdutoControleNsg.setList(listaProd);
+    }
+    
+     public int getSelectedRowProd() {
+        return jTable1.getSelectedRow();
+    
     }
 
     /**
@@ -129,7 +140,7 @@ public class JDlgVendaNsg extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jCboCliente_Nsg = new javax.swing.JComboBox<ClienteNsg>();
         jLabel4 = new javax.swing.JLabel();
-        jCboVendedor_Nsg = new javax.swing.JComboBox<VendedorNsg>();
+        jCboVendedor_Nsg = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jTxtUnidade_Nsg = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -137,10 +148,10 @@ public class JDlgVendaNsg extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         jBtnPesquisar_Nsg = new javax.swing.JButton();
         jBtnIncluir_Nsg = new javax.swing.JButton();
-        jBtnAlterar_Nsg = new javax.swing.JButton();
-        jBtnExcluir_Nsg = new javax.swing.JButton();
         jBtnConfirmar_Nsg = new javax.swing.JButton();
         jBtnCancelar_Nsg = new javax.swing.JButton();
+        jBtnExcluir_Nsg = new javax.swing.JButton();
+        jBtnAlterar_Nsg = new javax.swing.JButton();
         jBtnIncluir_Nsg2 = new javax.swing.JButton();
         jBtnAlterar_Nsg2 = new javax.swing.JButton();
         jBtnExcluir_Nsg2 = new javax.swing.JButton();
@@ -246,22 +257,6 @@ public class JDlgVendaNsg extends javax.swing.JDialog {
             }
         });
 
-        jBtnAlterar_Nsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/01 - alterar.png"))); // NOI18N
-        jBtnAlterar_Nsg.setText("Alerar");
-        jBtnAlterar_Nsg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnAlterar_NsgActionPerformed(evt);
-            }
-        });
-
-        jBtnExcluir_Nsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/02 - excluir.png"))); // NOI18N
-        jBtnExcluir_Nsg.setText("Excluir");
-        jBtnExcluir_Nsg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnExcluir_NsgActionPerformed(evt);
-            }
-        });
-
         jBtnConfirmar_Nsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/07 - confirmar.png"))); // NOI18N
         jBtnConfirmar_Nsg.setText("Confirmar");
         jBtnConfirmar_Nsg.addActionListener(new java.awt.event.ActionListener() {
@@ -278,6 +273,22 @@ public class JDlgVendaNsg extends javax.swing.JDialog {
             }
         });
 
+        jBtnExcluir_Nsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/02 - excluir.png"))); // NOI18N
+        jBtnExcluir_Nsg.setText("Excluir");
+        jBtnExcluir_Nsg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnExcluir_NsgActionPerformed(evt);
+            }
+        });
+
+        jBtnAlterar_Nsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/01 - alterar.png"))); // NOI18N
+        jBtnAlterar_Nsg.setText("Alerar");
+        jBtnAlterar_Nsg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnAlterar_NsgActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -286,11 +297,11 @@ public class JDlgVendaNsg extends javax.swing.JDialog {
                 .addGap(39, 39, 39)
                 .addComponent(jBtnIncluir_Nsg)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBtnPesquisar_Nsg)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBtnAlterar_Nsg)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBtnExcluir_Nsg)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBtnPesquisar_Nsg)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBtnConfirmar_Nsg)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -307,9 +318,10 @@ public class JDlgVendaNsg extends javax.swing.JDialog {
                         .addComponent(jBtnConfirmar_Nsg))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jBtnIncluir_Nsg)
-                        .addComponent(jBtnAlterar_Nsg)
-                        .addComponent(jBtnExcluir_Nsg)
-                        .addComponent(jBtnPesquisar_Nsg)))
+                        .addComponent(jBtnPesquisar_Nsg)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jBtnAlterar_Nsg)
+                            .addComponent(jBtnExcluir_Nsg))))
                 .addContainerGap())
         );
 
@@ -395,90 +407,111 @@ public class JDlgVendaNsg extends javax.swing.JDialog {
 
     private void jBtnIncluir_NsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluir_NsgActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(true, jBtnConfirmar_Nsg, jBtnCancelar_Nsg, jTxtNumVenda_Nsg, jFmtData_Nsg, jCboCliente_Nsg, jCboVendedor_Nsg, jTxtUnidade_Nsg, jTxtTotal_Nsg);
+        Util.habilitar(true, jBtnExcluir_Nsg2, jBtnAlterar_Nsg2, jBtnIncluir_Nsg2, jBtnConfirmar_Nsg, jBtnCancelar_Nsg, jTxtNumVenda_Nsg, jFmtData_Nsg, jCboCliente_Nsg, jCboVendedor_Nsg, jTxtUnidade_Nsg, jTxtTotal_Nsg);
         Util.habilitar(false, jBtnIncluir_Nsg, jBtnAlterar_Nsg, jBtnExcluir_Nsg, jBtnPesquisar_Nsg);
-        Util.limparCampos(jTxtNumVenda_Nsg, jFmtData_Nsg, jCboCliente_Nsg, jCboVendedor_Nsg, jTxtUnidade_Nsg, jTxtTotal_Nsg);
+        
+        vendaProdutoControleNsg.setList(new ArrayList());
+        jTxtNumVenda_Nsg.grabFocus();
         incluindo = true;
+        vendaNsg = new VendaNsg();
+        
+        Util.limparCampos(jTxtNumVenda_Nsg, jFmtData_Nsg, jCboCliente_Nsg, jCboVendedor_Nsg, jTxtUnidade_Nsg, jTxtTotal_Nsg);
     }//GEN-LAST:event_jBtnIncluir_NsgActionPerformed
 
     private void jBtnAlterar_NsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterar_NsgActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(true, jBtnConfirmar_Nsg, jBtnCancelar_Nsg, jTxtNumVenda_Nsg, jFmtData_Nsg, jCboCliente_Nsg, jCboVendedor_Nsg, jTxtUnidade_Nsg, jTxtTotal_Nsg);
+        int rowSel = jTable1.getSelectedRow();
+        if (rowSel != -1) {
+            vendaProdutoNsg = vendaProdutoControleNsg.getBean(rowSel);
+        
+        Util.habilitar(true, jBtnExcluir_Nsg2, jBtnAlterar_Nsg2, jBtnIncluir_Nsg2, jBtnConfirmar_Nsg, jBtnCancelar_Nsg, jTxtNumVenda_Nsg, jFmtData_Nsg, jCboCliente_Nsg, jCboVendedor_Nsg, jTxtUnidade_Nsg, jTxtTotal_Nsg);
         Util.habilitar(false, jBtnIncluir_Nsg, jBtnAlterar_Nsg, jBtnExcluir_Nsg, jBtnPesquisar_Nsg);
         
-        incluindo = false;
+        } else {
+            Util.mensagem("Deve ser realizada uma pesquisa antes");
+        }
     }//GEN-LAST:event_jBtnAlterar_NsgActionPerformed
 
     private void jBtnExcluir_NsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluir_NsgActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(false, jBtnConfirmar_Nsg, jBtnCancelar_Nsg, jTxtNumVenda_Nsg, jFmtData_Nsg, jCboCliente_Nsg, jCboVendedor_Nsg, jTxtUnidade_Nsg, jTxtTotal_Nsg);
-        Util.habilitar(true, jBtnIncluir_Nsg, jBtnAlterar_Nsg, jBtnPesquisar_Nsg, jBtnExcluir_Nsg);
-        
-        Cliente_DAO_Nsg cliente_DAO_Nsg = new Cliente_DAO_Nsg();
-        List listaCli = cliente_DAO_Nsg.listAll();
-        
-        Vendedor_DAO_Nsg vendedor_DAO_Nsg = new Vendedor_DAO_Nsg();
-        List listaVend = vendedor_DAO_Nsg.listAll();
-        
-        for (int i = 0; i < listaCli.size(); i++) {
-        if (cliente_DAO_Nsg.equals(jCboCliente_Nsg.getItemAt(i))) {
-            
-            if (Util.perguntar("Deseja excluir o projeto?") == true) {
-            jCboCliente_Nsg.removeItem((ClienteNsg) listaCli.get(i));
-            VendaNsg vendaNsg = viewBean();
-            Venda_DAO_Nsg venda_DAO_Nsg = new Venda_DAO_Nsg();
-            venda_DAO_Nsg.delete(vendaNsg);
+        if (vendaNsg != null) {
+            if (Util.perguntar("Deseja excluir o pedido?") == true) {
+                VendaProdutoNsg vendaProdutoNsg;
+                for (int linha = 0; linha < jTable1.getRowCount(); linha++) {
+                    vendaProdutoNsg = vendaProdutoControleNsg.getBean(linha);
+                    vendaProduto_DAO_Nsg.delete(vendaNsg);
+                }
+                venda_DAO_Nsg.delete(vendaNsg);
             }
-            
-        } if(vendedor_DAO_Nsg.equals(jCboVendedor_Nsg.getItemAt(i))){
-            jCboVendedor_Nsg.removeItem((VendedorNsg) listaVend.get(i));
+        } else {
+            Util.mensagem("Deve ser realizada uma pesquisa!");
         }
-        else {
-            Util.mensagem("Exclusão cancelada");
-        } }
 
         Util.limparCampos(jTxtNumVenda_Nsg, jFmtData_Nsg, jCboCliente_Nsg, jCboVendedor_Nsg, jTxtUnidade_Nsg, jTxtTotal_Nsg);
+        vendaNsg = null;
+        
+//        Util.habilitar(false, jBtnConfirmar_Nsg, jBtnCancelar_Nsg, jTxtNumVenda_Nsg, jFmtData_Nsg, jCboCliente_Nsg, jCboVendedor_Nsg, jTxtUnidade_Nsg, jTxtTotal_Nsg);
+//        Util.habilitar(true, jBtnIncluir_Nsg, jBtnAlterar_Nsg, jBtnPesquisar_Nsg, jBtnExcluir_Nsg);
     }//GEN-LAST:event_jBtnExcluir_NsgActionPerformed
 
     private void jBtnConfirmar_NsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmar_NsgActionPerformed
         // TODO add your handling code here:
-        VendaNsg vendaNsg = viewBean();
-        Venda_DAO_Nsg venda_DAO_Nsg = new Venda_DAO_Nsg();
+        vendaNsg = viewBean();
         
         if (incluindo == true) {
             venda_DAO_Nsg.insert(vendaNsg);
+            VendaProduto_DAO_Nsg vendaProduto_DAO_Nsg = new VendaProduto_DAO_Nsg();
+            
+            for (int linha = 0; linha < jTable1.getRowCount(); linha++) {
+                vendaProdutoNsg = vendaProdutoControleNsg.getBean(linha);
+                vendaProdutoNsg.setVendaNsg(vendaNsg);
+                vendaProduto_DAO_Nsg.insert(vendaProdutoNsg);
+            }
         } else {
             venda_DAO_Nsg.update(vendaNsg);
+            
+            for (int linha = 0; linha < jTable1.getRowCount(); linha++) {
+                vendaProdutoNsg = vendaProdutoControleNsg.getBean(linha);
+                vendaProdutoNsg.setVendaNsg(vendaNsg);
+                this.vendaProduto_DAO_Nsg.delete(vendaProdutoNsg);
+            }
         }
+        
+        Util.limparCampos(jTxtNumVenda_Nsg, jFmtData_Nsg, jCboCliente_Nsg, jCboVendedor_Nsg, jTxtUnidade_Nsg, jTxtTotal_Nsg);
+        vendaProdutoControleNsg.setList(new ArrayList());
+        vendaNsg = null;
         
         Util.habilitar(false, jBtnAlterar_Nsg, jBtnExcluir_Nsg, jBtnConfirmar_Nsg, jBtnCancelar_Nsg, jTxtNumVenda_Nsg, jFmtData_Nsg, jCboCliente_Nsg, jCboVendedor_Nsg, jTxtUnidade_Nsg, jTxtTotal_Nsg);
         Util.habilitar(true, jBtnIncluir_Nsg, jBtnPesquisar_Nsg);
-        Util.limparCampos(jTxtNumVenda_Nsg, jFmtData_Nsg, jCboCliente_Nsg, jCboVendedor_Nsg, jTxtUnidade_Nsg, jTxtTotal_Nsg);
     }//GEN-LAST:event_jBtnConfirmar_NsgActionPerformed
 
     private void jBtnCancelar_NsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelar_NsgActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(false, jBtnAlterar_Nsg, jBtnExcluir_Nsg, jBtnConfirmar_Nsg, jBtnCancelar_Nsg, jTxtNumVenda_Nsg, jFmtData_Nsg, jCboCliente_Nsg, jCboVendedor_Nsg, jTxtUnidade_Nsg, jTxtTotal_Nsg);
+        Util.limparCampos(jTxtNumVenda_Nsg, jFmtData_Nsg, jCboCliente_Nsg, jCboVendedor_Nsg, jTxtUnidade_Nsg, jTxtTotal_Nsg);
+        vendaProdutoControleNsg.setList(new ArrayList());
+        vendaNsg = null;
+        
+        Util.habilitar(false, jBtnExcluir_Nsg2, jBtnAlterar_Nsg2, jBtnIncluir_Nsg2, jBtnAlterar_Nsg, jBtnExcluir_Nsg, jBtnConfirmar_Nsg, jBtnCancelar_Nsg, jTxtNumVenda_Nsg, jFmtData_Nsg, jCboCliente_Nsg, jCboVendedor_Nsg, jTxtUnidade_Nsg, jTxtTotal_Nsg);
         Util.habilitar(true, jBtnIncluir_Nsg, jBtnPesquisar_Nsg);
         
-        Util.limparCampos(jTxtNumVenda_Nsg, jFmtData_Nsg, jCboCliente_Nsg, jCboVendedor_Nsg, jTxtUnidade_Nsg, jTxtTotal_Nsg);
         Util.mensagem("Operação cancelada");
     }//GEN-LAST:event_jBtnCancelar_NsgActionPerformed
 
     private void jBtnIncluir_Nsg2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluir_Nsg2ActionPerformed
         // TODO add your handling code here:
         JDlgVendaProdutoNsg jDlgVendaProdutoNsg = new JDlgVendaProdutoNsg(null, true);
-        setTitle("Inclusão de produto");
+        jDlgVendaProdutoNsg.setTitle("Inclusão de produtos");
         jDlgVendaProdutoNsg.setTelaAnterior(this);
         jDlgVendaProdutoNsg.setVisible(true);
         
-        Util.habilitar(true,  jBtnAlterar_Nsg, jBtnPesquisar_Nsg, jBtnCancelar_Nsg,jBtnExcluir_Nsg);
-        Util.habilitar(false, jBtnIncluir_Nsg, jBtnConfirmar_Nsg);
+        Util.habilitar(true, jBtnConfirmar_Nsg, jBtnAlterar_Nsg, jBtnPesquisar_Nsg, jBtnCancelar_Nsg,jBtnExcluir_Nsg);
+        Util.habilitar(false, jBtnIncluir_Nsg, jBtnAlterar_Nsg, jBtnExcluir_Nsg, jBtnPesquisar_Nsg);
     }//GEN-LAST:event_jBtnIncluir_Nsg2ActionPerformed
 
     private void jBtnAlterar_Nsg2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterar_Nsg2ActionPerformed
         // TODO add your handling code here:
         JDlgVendaProdutoNsg jDlgVendaProdutoNsg = new JDlgVendaProdutoNsg (null, true);
+        jDlgVendaProdutoNsg.setTitle("Alteração de produtos");
         jDlgVendaProdutoNsg.setTelaAnterior(this);
         int linSel = jTable1.getSelectedRow();
         VendaProdutoNsg vendaProdutoNsg = (VendaProdutoNsg) vendaProdutoControleNsg.getBean(linSel);

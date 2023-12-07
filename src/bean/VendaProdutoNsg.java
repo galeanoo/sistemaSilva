@@ -5,6 +5,8 @@ package bean;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -15,8 +17,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="vendaProduto_nsg"
-//    ,catalog="db_nayara_silva"
-    ,catalog="test"
+    ,catalog="db_nayara_silva"
+//    ,catalog="test"
 )
 public class VendaProdutoNsg  implements java.io.Serializable {
 
@@ -24,25 +26,21 @@ public class VendaProdutoNsg  implements java.io.Serializable {
      private int idVendaProdutoNsg;
      private ProdutoNsg produtoNsg;
      private VendaNsg vendaNsg;
-     private VendedorNsg vendedorNsg;
-     private ClienteNsg clienteNsg;
      private String quantidadeNsg;
      private String valorUnitNsg;
 
     public VendaProdutoNsg() {
     }
 
-    public VendaProdutoNsg(int idVendaProdutoNsg, ProdutoNsg produtoNsg, VendaNsg vendaNsg, VendedorNsg vendedorNsg, ClienteNsg clienteNsg, String quantidadeNsg, String valorUnitNsg) {
+    public VendaProdutoNsg(int idVendaProdutoNsg, ProdutoNsg produtoNsg, VendaNsg vendaNsg, String quantidadeNsg, String valorUnitNsg) {
        this.idVendaProdutoNsg = idVendaProdutoNsg;
        this.produtoNsg = produtoNsg;
        this.vendaNsg = vendaNsg;
-       this.vendedorNsg = vendedorNsg;
-       this.clienteNsg = clienteNsg;
        this.quantidadeNsg = quantidadeNsg;
        this.valorUnitNsg = valorUnitNsg;
     }
    
-     @Id 
+     @Id @GeneratedValue(strategy=IDENTITY)
 
     
     @Column(name="id_vendaProduto_nsg", unique=true, nullable=false)
@@ -73,28 +71,6 @@ public class VendaProdutoNsg  implements java.io.Serializable {
     public void setVendaNsg(VendaNsg vendaNsg) {
         this.vendaNsg = vendaNsg;
     }
-
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="vendedor_nsg", nullable=false)
-    public VendedorNsg getVendedorNsg() {
-        return this.vendedorNsg;
-    }
-    
-    public void setVendedorNsg(VendedorNsg vendedorNsg) {
-        this.vendedorNsg = vendedorNsg;
-    }
-    
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="cliente_nsg", nullable=false)
-    public ClienteNsg getClienteNsg() {
-        return this.clienteNsg;
-    }
-    
-    public void setClienteNsg(ClienteNsg clienteNsg) {
-        this.clienteNsg = clienteNsg;
-    }
-
-    
     @Column(name="quantidade_nsg", nullable=false, length=80)
     public String getQuantidadeNsg() {
         return this.quantidadeNsg;
@@ -113,10 +89,6 @@ public class VendaProdutoNsg  implements java.io.Serializable {
     public void setValorUnitNsg(String valorUnitNsg) {
         this.valorUnitNsg = valorUnitNsg;
     }
-
-
-
-
 }
 
 

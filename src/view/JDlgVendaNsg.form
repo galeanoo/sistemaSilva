@@ -179,7 +179,6 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox&lt;VendedorNsg&gt;()"/>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;VendedorNsg&gt;"/>
           </AuxValues>
         </Component>
@@ -211,11 +210,11 @@
                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   <Component id="jBtnIncluir_Nsg" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jBtnPesquisar_Nsg" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="jBtnAlterar_Nsg" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jBtnExcluir_Nsg" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jBtnPesquisar_Nsg" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jBtnConfirmar_Nsg" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -235,9 +234,11 @@
                       </Group>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jBtnIncluir_Nsg" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jBtnAlterar_Nsg" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jBtnExcluir_Nsg" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jBtnPesquisar_Nsg" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                              <Component id="jBtnAlterar_Nsg" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jBtnExcluir_Nsg" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -268,28 +269,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnIncluir_NsgActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jBtnAlterar_Nsg">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagens/01 - alterar.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Alerar"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnAlterar_NsgActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="jBtnExcluir_Nsg">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagens/02 - excluir.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Excluir"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnExcluir_NsgActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JButton" name="jBtnConfirmar_Nsg">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -310,6 +289,28 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnCancelar_NsgActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="jBtnExcluir_Nsg">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imagens/02 - excluir.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Excluir"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnExcluir_NsgActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="jBtnAlterar_Nsg">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imagens/01 - alterar.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Alerar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnAlterar_NsgActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

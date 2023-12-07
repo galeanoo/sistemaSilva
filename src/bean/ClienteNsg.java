@@ -19,8 +19,8 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name="cliente_nsg"
-//    ,catalog="db_nayara_silva"
-    ,catalog="test"
+    ,catalog="db_nayara_silva"
+//    ,catalog="test"
 )
 public class ClienteNsg  implements java.io.Serializable {
 
@@ -226,6 +226,22 @@ public class ClienteNsg  implements java.io.Serializable {
     public void setComplementoNsg(String complementoNsg) {
         this.complementoNsg = complementoNsg;
     }
-}
+    
+    @Override
+    public String toString() {
+        return getNomeNsg();
+    }
+    
+    public boolean equals (Object object) {
+    if (object instanceof ClienteNsg) {
+        ClienteNsg clienteNsg = (ClienteNsg) object;
+        
+        if (this.getNomeNsg() == clienteNsg.getNomeNsg()){
+            return true;
+        }
+    }
+    return false;
+    }}
+
 
 
