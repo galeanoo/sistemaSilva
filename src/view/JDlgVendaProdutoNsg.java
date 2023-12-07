@@ -30,7 +30,6 @@ public class JDlgVendaProdutoNsg extends javax.swing.JDialog {
     public JDlgVendaProdutoNsg(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setTitle("Inclusão de VendaProduto");
         setLocationRelativeTo(null);
         
         Venda_DAO_Nsg venda_DAO_Nsg = new Venda_DAO_Nsg();
@@ -98,7 +97,7 @@ public class JDlgVendaProdutoNsg extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jBtnIncluir_Nsg2 = new javax.swing.JButton();
+        jBtnOK_Nsg = new javax.swing.JButton();
         jBtnCancelar_Nsg = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jTxtIdVendaProduto_Nsg = new javax.swing.JTextField();
@@ -117,11 +116,11 @@ public class JDlgVendaProdutoNsg extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jBtnIncluir_Nsg2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/05 - ok.png"))); // NOI18N
-        jBtnIncluir_Nsg2.setText("Incluir");
-        jBtnIncluir_Nsg2.addActionListener(new java.awt.event.ActionListener() {
+        jBtnOK_Nsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/05 - ok.png"))); // NOI18N
+        jBtnOK_Nsg.setText("OK");
+        jBtnOK_Nsg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnIncluir_Nsg2ActionPerformed(evt);
+                jBtnOK_NsgActionPerformed(evt);
             }
         });
 
@@ -169,12 +168,11 @@ public class JDlgVendaProdutoNsg extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jTxtValorUnit_Nsg, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))))
+                                    .addComponent(jTxtValorUnit_Nsg, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jBtnIncluir_Nsg2)))
+                                .addComponent(jBtnOK_Nsg)))
                         .addGap(5, 5, 5)
                         .addComponent(jBtnCancelar_Nsg)
                         .addGap(10, 10, 10))
@@ -248,7 +246,7 @@ public class JDlgVendaProdutoNsg extends javax.swing.JDialog {
                         .addComponent(jTxtQuantidade_Nsg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBtnIncluir_Nsg2)
+                    .addComponent(jBtnOK_Nsg)
                     .addComponent(jBtnCancelar_Nsg))
                 .addContainerGap())
         );
@@ -256,14 +254,23 @@ public class JDlgVendaProdutoNsg extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBtnIncluir_Nsg2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluir_Nsg2ActionPerformed
-    VendaProdutoNsg vendaProdutoNsg = viewBean();
-    VendaProduto_DAO_Nsg vendaProduto_DAO_Nsg = new VendaProduto_DAO_Nsg();
-    vendaProduto_DAO_Nsg.insert(vendaProdutoNsg);
+    private void jBtnOK_NsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOK_NsgActionPerformed
+    VendaProdutoNsg vendaProdutoNsg = new VendaProdutoNsg();
+    vendaProdutoNsg.setProdutoNsg((ProdutoNsg) jCboProduto_Nsg.getSelectedItem());
+    vendaProdutoNsg.setQuantidadeNsg(jTxtQuantidade_Nsg.getText());
+    vendaProdutoNsg.setValorUnitNsg(jTxtValorUnit_Nsg.getText());
+    
+    if (getTitle().toUpperCase().substring(0, 1).equals("I")) {
+        jDlgVendaNsg.vendaProdutoControleNsg.addBean(vendaProdutoNsg);
+    } else {
+        jDlgVendaNsg.vendaProdutoControleNsg.updateBan(jDlgVendaNsg.getSelectedRowProd(), vendaProdutoNsg);
+    }
+    
+        setVisible(false);
     
     Util.limparCampos(jTxtIdVendaProduto_Nsg, jCboVenda_Nsg, jCboProduto_Nsg, jCboVendedor_Nsg, jCboCliente_Nsg, jTxtQuantidade_Nsg, jTxtValorUnit_Nsg);
     Util.mensagem("incluído");
-    }//GEN-LAST:event_jBtnIncluir_Nsg2ActionPerformed
+    }//GEN-LAST:event_jBtnOK_NsgActionPerformed
 
     private void jBtnCancelar_NsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelar_NsgActionPerformed
         // TODO add your handling code here:
@@ -320,7 +327,7 @@ public class JDlgVendaProdutoNsg extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnCancelar_Nsg;
-    private javax.swing.JButton jBtnIncluir_Nsg2;
+    private javax.swing.JButton jBtnOK_Nsg;
     private javax.swing.JComboBox<ClienteNsg> jCboCliente_Nsg;
     private javax.swing.JComboBox<ProdutoNsg> jCboProduto_Nsg;
     private javax.swing.JComboBox<VendaNsg> jCboVenda_Nsg;

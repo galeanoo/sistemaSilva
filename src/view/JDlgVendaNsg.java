@@ -155,6 +155,12 @@ public class JDlgVendaNsg extends javax.swing.JDialog {
 
         jLabel3.setText("Cliente");
 
+        jCboCliente_Nsg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCboCliente_NsgActionPerformed(evt);
+            }
+        });
+
         jLabel4.setText("Vendedor");
 
         jLabel5.setText("Unidade");
@@ -408,13 +414,28 @@ public class JDlgVendaNsg extends javax.swing.JDialog {
         Util.habilitar(false, jBtnConfirmar_Nsg, jBtnCancelar_Nsg, jTxtNumVenda_Nsg, jFmtData_Nsg, jCboCliente_Nsg, jCboVendedor_Nsg, jTxtUnidade_Nsg, jTxtTotal_Nsg);
         Util.habilitar(true, jBtnIncluir_Nsg, jBtnAlterar_Nsg, jBtnPesquisar_Nsg, jBtnExcluir_Nsg);
         
-        if (Util.perguntar("Deseja excluir o projeto?") == true){
+        Cliente_DAO_Nsg cliente_DAO_Nsg = new Cliente_DAO_Nsg();
+        List listaCli = cliente_DAO_Nsg.listAll();
+        
+        Vendedor_DAO_Nsg vendedor_DAO_Nsg = new Vendedor_DAO_Nsg();
+        List listaVend = vendedor_DAO_Nsg.listAll();
+        
+        for (int i = 0; i < listaCli.size(); i++) {
+        if (cliente_DAO_Nsg.equals(jCboCliente_Nsg.getItemAt(i))) {
+            
+            if (Util.perguntar("Deseja excluir o projeto?") == true) {
+            jCboCliente_Nsg.removeItem((ClienteNsg) listaCli.get(i));
             VendaNsg vendaNsg = viewBean();
             Venda_DAO_Nsg venda_DAO_Nsg = new Venda_DAO_Nsg();
             venda_DAO_Nsg.delete(vendaNsg);
-        }else {
-            Util.mensagem("Exclusão cancelada");
+            }
+            
+        } if(vendedor_DAO_Nsg.equals(jCboVendedor_Nsg.getItemAt(i))){
+            jCboVendedor_Nsg.removeItem((VendedorNsg) listaVend.get(i));
         }
+        else {
+            Util.mensagem("Exclusão cancelada");
+        } }
 
         Util.limparCampos(jTxtNumVenda_Nsg, jFmtData_Nsg, jCboCliente_Nsg, jCboVendedor_Nsg, jTxtUnidade_Nsg, jTxtTotal_Nsg);
     }//GEN-LAST:event_jBtnExcluir_NsgActionPerformed
@@ -447,6 +468,7 @@ public class JDlgVendaNsg extends javax.swing.JDialog {
     private void jBtnIncluir_Nsg2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluir_Nsg2ActionPerformed
         // TODO add your handling code here:
         JDlgVendaProdutoNsg jDlgVendaProdutoNsg = new JDlgVendaProdutoNsg(null, true);
+        setTitle("Inclusão de produto");
         jDlgVendaProdutoNsg.setTelaAnterior(this);
         jDlgVendaProdutoNsg.setVisible(true);
         
@@ -456,16 +478,11 @@ public class JDlgVendaNsg extends javax.swing.JDialog {
 
     private void jBtnAlterar_Nsg2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterar_Nsg2ActionPerformed
         // TODO add your handling code here:
-        int sel = jTable1.getSelectedRow();
-        incluindo = false;
-        
-        VendaProdutoNsg vendaProdutoNsg = vendaProdutoControleNsg.getBean(sel);
+        JDlgVendaProdutoNsg jDlgVendaProdutoNsg = new JDlgVendaProdutoNsg (null, true);
+        jDlgVendaProdutoNsg.setTelaAnterior(this);
+        int linSel = jTable1.getSelectedRow();
+        VendaProdutoNsg vendaProdutoNsg = (VendaProdutoNsg) vendaProdutoControleNsg.getBean(linSel);
         jDlgVendaProdutoNsg.beanView(vendaProdutoNsg);
-        
-        this.jDlgVendaProdutoNsg.setTitle("Alterar");
-        jDlgVendaProdutoNsg.setVisible(true);
-        
-        jDlgVendaProdutoNsg.setTitle("Alterar");
         jDlgVendaProdutoNsg.setVisible(true);
     }//GEN-LAST:event_jBtnAlterar_Nsg2ActionPerformed
 
@@ -485,6 +502,10 @@ public class JDlgVendaNsg extends javax.swing.JDialog {
     private void jTxtUnidade_NsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtUnidade_NsgActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtUnidade_NsgActionPerformed
+
+    private void jCboCliente_NsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCboCliente_NsgActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCboCliente_NsgActionPerformed
 
     /**
      * @param args the command line arguments
