@@ -132,9 +132,8 @@ public class ProdutoNsg  implements java.io.Serializable {
     public String toString() {
         return getSaborNsg();
     }
-
     
-    
+    @Override
     public boolean equals (Object object) {
     if (object instanceof ProdutoNsg) {
         ProdutoNsg produtoNsg = (ProdutoNsg) object;

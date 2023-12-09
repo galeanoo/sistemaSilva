@@ -103,7 +103,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Total"/>
+            <Property name="text" type="java.lang.String" value="Total (Maior - Igual)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTxtTotal_Nsg">

@@ -6,6 +6,7 @@
 package view;
 
 import bean.VendedorNsg;
+import dao.Produto_DAO_Nsg;
 import dao.Vendedor_DAO_Nsg;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,7 +21,11 @@ import tools.Util;
  * @author u09229145165
  */
 public class JDlgVendedorIANsg extends javax.swing.JDialog {
+    boolean incluir;
     private MaskFormatter mascaraCPF, mascaraCelular;
+    JDlgProdutoNsg jDlgProdutoNsg;
+    ProdutoControleNsg produtoControleNsg;
+    Produto_DAO_Nsg produto_DAO_Nsg;
 
     /**
      * Creates new form JDlgVendedorIANsg
@@ -40,6 +45,12 @@ public class JDlgVendedorIANsg extends javax.swing.JDialog {
           
          jFmtCpf_Nsg.setFormatterFactory(new DefaultFormatterFactory(mascaraCPF));
          jFmtCelular_Nsg.setFormatterFactory(new DefaultFormatterFactory(mascaraCelular));
+    }
+    
+    public JDlgVendedorIANsg (boolean incluindo){
+        this.incluir = incluindo;
+        initComponents();
+    
     }
     
         public VendedorNsg viewBean() {
@@ -160,35 +171,35 @@ public class JDlgVendedorIANsg extends javax.swing.JDialog {
                             .addComponent(jFmtCpf_Nsg, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jFmtCelular_Nsg)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(17, 17, 17)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel5)
-                                            .addComponent(jCboComissao_Nsg, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jFmtCelular_Nsg)))
+                                .addComponent(jLabel4)
+                                .addGap(65, 65, 65))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(179, 179, 179)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
                                     .addComponent(jTxtNome_Nsg, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jTxtCodigo_Nsg, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7)
-                            .addComponent(jCboGenero_Nsg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel10))
+                            .addComponent(jLabel10)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jCboGenero_Nsg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jCboComissao_Nsg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,16 +240,24 @@ public class JDlgVendedorIANsg extends javax.swing.JDialog {
     private void jBtnIncluir_NsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluir_NsgActionPerformed
     VendedorNsg vendedorNsg = viewBean();
     Vendedor_DAO_Nsg vendedor_DAO_Nsg = new Vendedor_DAO_Nsg();
-    vendedor_DAO_Nsg.insert(vendedorNsg);
+    
+    if (getTitle().toUpperCase().substring(0, 1).equals("I")) {
+            vendedor_DAO_Nsg.insert(vendedorNsg);
+           
+        } else {    
+             vendedor_DAO_Nsg.update(vendedorNsg);
+        }
+        setVisible(false); 
     
     Util.limparCampos(jTxtCodigo_Nsg, jTxtNome_Nsg, jFmtCpf_Nsg, jFmtCelular_Nsg, jCboComissao_Nsg, jCboGenero_Nsg);
     Util.mensagem("incluido");
-    setVisible(false);
+    
     }//GEN-LAST:event_jBtnIncluir_NsgActionPerformed
 
     private void jBtnCancelar_NsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelar_NsgActionPerformed
         // TODO add your handling code here:
         Util.mensagem("Operação Cancelada");
+        Util.limparCampos(jTxtCodigo_Nsg, jTxtNome_Nsg, jFmtCpf_Nsg, jFmtCelular_Nsg, jCboComissao_Nsg, jCboGenero_Nsg);
         setVisible(false);
     }//GEN-LAST:event_jBtnCancelar_NsgActionPerformed
 

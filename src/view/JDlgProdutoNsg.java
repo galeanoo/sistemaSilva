@@ -36,6 +36,11 @@ public class JDlgProdutoNsg extends javax.swing.JDialog {
         produtoControleNsg.setList(lista);
         jTable1.setModel(produtoControleNsg);
     }
+    
+    public int getSelectedRowProd() {
+        return jTable1.getSelectedRow();
+    
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -100,7 +105,7 @@ public class JDlgProdutoNsg extends javax.swing.JDialog {
 
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 0, 20)); // NOI18N
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/14 - compra.png"))); // NOI18N
-        jLabel9.setText("Produtos");
+        jLabel9.setText("Cadastrar Produtos");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,25 +135,25 @@ public class JDlgProdutoNsg extends javax.swing.JDialog {
 
     private void jBtnIncluir_NsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluir_NsgActionPerformed
         // TODO add your handling code here:
-        incluindo = true;
-        
         jDlgProdutoIANsg.setTitle("Incluir");
         jDlgProdutoIANsg.setVisible(true);
+        
+        List lista = produto_DAO_Nsg.listAll();
+        produtoControleNsg.setList(lista);
     }//GEN-LAST:event_jBtnIncluir_NsgActionPerformed
 
     private void jBtnAlterar_NsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterar_NsgActionPerformed
         // TODO add your handling code here:
+        jDlgProdutoIANsg.setTitle("Alterar");
+        
         int sel = jTable1.getSelectedRow();
-        incluindo = false;
         
         ProdutoNsg produtoNsg = produtoControleNsg.getBean(sel);
         jDlgProdutoIANsg.beanView(produtoNsg);
         
-        this.jDlgProdutoIANsg.setTitle("Alterar");
-        jDlgProdutoIANsg.setVisible(true);
-        
-        jDlgProdutoIANsg.setTitle("Alterar");
-        jDlgProdutoIANsg.setVisible(true);
+        jDlgProdutoIANsg.setVisible(true); 
+         List lista = produto_DAO_Nsg.listAll();
+          produtoControleNsg.setList(lista);
     }//GEN-LAST:event_jBtnAlterar_NsgActionPerformed
 
     private void jBtnExcluir_NsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluir_NsgActionPerformed
@@ -162,6 +167,9 @@ public class JDlgProdutoNsg extends javax.swing.JDialog {
         } else{
             Util.mensagem("Exclusão cancelada");
         }
+        
+           List lista = produto_DAO_Nsg.listAll();
+          produtoControleNsg.setList(lista);
     }//GEN-LAST:event_jBtnExcluir_NsgActionPerformed
 
     /**

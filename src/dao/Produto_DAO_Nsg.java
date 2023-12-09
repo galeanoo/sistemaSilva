@@ -8,6 +8,7 @@ package dao;
 import bean.ProdutoNsg;
 import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -60,10 +61,10 @@ public class Produto_DAO_Nsg extends DAO_Abstract {
         return lista;
     }
     
-    public List listSabor(int saborNsg) {
+    public List listSabor(String saborNsg) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(ProdutoNsg.class);
-        criteria.add(Restrictions.ge("saborNsg", saborNsg));
+        criteria.add(Restrictions.ilike("saborNsg", saborNsg, MatchMode.ANYWHERE));
         List results = criteria.list();
         session.getTransaction().commit();
         return results;
@@ -87,10 +88,10 @@ public class Produto_DAO_Nsg extends DAO_Abstract {
         return results;
     }
     
-    public List listSMT(int saborNsg, int modoNsg, int tamanhoNsg) {
+    public List listSMT(String saborNsg, int modoNsg, int tamanhoNsg) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(ProdutoNsg.class);
-        criteria.add(Restrictions.ge("saborNsg", saborNsg));
+        criteria.add(Restrictions.ilike("saborNsg", saborNsg, MatchMode.ANYWHERE));
         criteria.add(Restrictions.ge("modoNsg", modoNsg));
         criteria.add(Restrictions.ge("tamanhoNsg", tamanhoNsg));
         List results = criteria.list();

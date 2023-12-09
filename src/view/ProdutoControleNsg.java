@@ -20,7 +20,8 @@ public class ProdutoControleNsg extends AbstractTableModel{
     public void setList(List lista){
     this.lista = lista;
     this.fireTableDataChanged();
-    };
+    }
+    
     public ProdutoNsg getBean(int row){
     return (ProdutoNsg)lista.get(row);
     }
@@ -52,6 +53,21 @@ return 4;
         return produtoNsg.getTamanhoNsg();
         }
         return "";
+    }
+    
+    public void addBean(ProdutoNsg ProdutoNsg) {
+            lista.add(ProdutoNsg);
+            this.fireTableDataChanged();
+    }
+    
+    public void removeBean(int index) {
+            lista.remove(index);
+            this.fireTableDataChanged();
+    }
+    
+    public void updateBean(int index, ProdutoNsg ProdutoNsg){
+        lista.set(index, ProdutoNsg);
+        this.fireTableDataChanged();
     }
     
     @Override

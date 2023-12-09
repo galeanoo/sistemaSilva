@@ -55,11 +55,10 @@ public class JDlgConsultaVendaNsg extends javax.swing.JDialog {
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(700, 440));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel1.setText("Total");
+        jLabel1.setText("Total (Maior - Igual)");
 
         jLabel2.setText("Unidade (Maior - Igual)");
 
@@ -145,15 +144,15 @@ public class JDlgConsultaVendaNsg extends javax.swing.JDialog {
             vendaControleNsg.setList(lista);
         } else {
             if (!jTxtUnidade_Nsg.getText().equals("") && !jTxtTotal_Nsg.getText().equals("")){
-                List lista = venda_DAO_Nsg.listTotalUnidade(jTxtTotal_Nsg.getText(), Util.strInt(jTxtUnidade_Nsg.getText()));
+                List lista = venda_DAO_Nsg.listTotalUnidade(Util.strDouble(jTxtTotal_Nsg.getText()), jTxtUnidade_Nsg.getText());
                 vendaControleNsg.setList(lista);
             } else {
                 if (!jTxtTotal_Nsg.getText().equals("")){
-                    List lista = venda_DAO_Nsg.listTotal(jTxtTotal_Nsg.getText());
+                    List lista = venda_DAO_Nsg.listTotal(Util.strDouble(jTxtTotal_Nsg.getText()));
                     vendaControleNsg.setList(lista);
                 } else {
                     if (!jTxtUnidade_Nsg.getText().equals("")) {
-                        List lista = venda_DAO_Nsg.listUnidade(Util.strInt(jTxtUnidade_Nsg.getText()));
+                        List lista = venda_DAO_Nsg.listUnidade(jTxtUnidade_Nsg.getText());
                         vendaControleNsg.setList(lista);
                     }
                 }
@@ -206,24 +205,9 @@ public class JDlgConsultaVendaNsg extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTxtTotal_Nsg;

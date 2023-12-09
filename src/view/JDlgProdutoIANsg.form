@@ -195,7 +195,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/imagens/05 - ok.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Incluir"/>
+            <Property name="text" type="java.lang.String" value="Confirmar"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnIncluir_NsgActionPerformed"/>
@@ -268,11 +268,10 @@
     <Component class="javax.swing.JComboBox" name="jCboModo_Nsg">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
+          <StringArray count="3">
             <StringItem index="0" value="Massa crua"/>
             <StringItem index="1" value="Frito"/>
             <StringItem index="2" value="Assado"/>
-            <StringItem index="3" value=" "/>
           </StringArray>
         </Property>
       </Properties>

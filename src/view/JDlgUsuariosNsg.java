@@ -188,7 +188,7 @@ public class JDlgUsuariosNsg extends javax.swing.JDialog {
             }
         });
 
-        jCboNivel_Nsg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escolher nível", "Baixo", "Médio", "Alto" }));
+        jCboNivel_Nsg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Baixo", "Médio", "Alto" }));
         jCboNivel_Nsg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCboNivel_NsgActionPerformed(evt);

@@ -14,8 +14,9 @@ import tools.Util;
  * @author u09229145165
  */
 public class JDlgProdutoIANsg extends javax.swing.JDialog {
-    boolean incluir;
-    JDlgProdutoNsg jDlgProdutoNsg;
+        JDlgProdutoNsg jDlgProdutoNsg;
+        ProdutoControleNsg produtoControleNsg;
+        Produto_DAO_Nsg produto_DAO_Nsg;
     /**
      * Creates new form JDlgProdutoIANsg
      */
@@ -24,12 +25,6 @@ public class JDlgProdutoIANsg extends javax.swing.JDialog {
         initComponents();
         setTitle("Inclusão e Alteração");
         setLocationRelativeTo(null);
-    }
-    
-    public JDlgProdutoIANsg (boolean incluindo){
-        this.incluir = incluindo;
-        initComponents();
-    
     }
     
     public ProdutoNsg viewBean() {
@@ -43,12 +38,6 @@ public class JDlgProdutoIANsg extends javax.swing.JDialog {
         produtoNsg.setModoNsg(jCboModo_Nsg.getSelectedIndex());
         produtoNsg.setTamanhoNsg(jCboTamanho_Nsg.getSelectedIndex());
         produtoNsg.setRetirarNsg(jChbRetirar_Nsg.isSelected() == true ? "S" : "N");
-        
-//        if(jChbRetirar_Nsg.isSelected()==true){
-//        produtoNsg.setRetirarNsg("S");
-//        }else{
-//        produtoNsg.setRetirarNsg("N");
-//        }    
         
         return produtoNsg;
     }
@@ -122,7 +111,7 @@ public class JDlgProdutoIANsg extends javax.swing.JDialog {
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING));
 
         jBtnIncluir_Nsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/05 - ok.png"))); // NOI18N
-        jBtnIncluir_Nsg.setText("Incluir");
+        jBtnIncluir_Nsg.setText("Confirmar");
         jBtnIncluir_Nsg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnIncluir_NsgActionPerformed(evt);
@@ -155,7 +144,7 @@ public class JDlgProdutoIANsg extends javax.swing.JDialog {
 
         jCboMassa_Nsg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mandioca", "Fubá", "Integral", "Frango" }));
 
-        jCboModo_Nsg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Massa crua", "Frito", "Assado", " " }));
+        jCboModo_Nsg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Massa crua", "Frito", "Assado" }));
 
         jCboTamanho_Nsg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "P", "M", "G", "XG" }));
 
@@ -261,12 +250,18 @@ public class JDlgProdutoIANsg extends javax.swing.JDialog {
 
     private void jBtnIncluir_NsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluir_NsgActionPerformed
         //ProdutoNsg produtoNsg = viewBean();
-    ProdutoNsg produtoNsg = viewBean();
-    Produto_DAO_Nsg produto_DAO_Nsg = new Produto_DAO_Nsg();
-    produto_DAO_Nsg.insert(produtoNsg);
+        ProdutoNsg produtoNsg = viewBean(); 
+          Produto_DAO_Nsg produto_DAO_Nsg = new Produto_DAO_Nsg();
+        if (getTitle().toUpperCase().substring(0, 1).equals("I")) {
+            produto_DAO_Nsg.insert(produtoNsg);
+           
+        } else {    
+             produto_DAO_Nsg.update(produtoNsg);
+        }
+        setVisible(false);        
     
     Util.limparCampos(jTxtCodigo_Nsg, jFmtValorunit_Nsg, jTxtSabor_Nsg, jTxtUnidade_Nsg, jCboMassa_Nsg, jCboModo_Nsg, jCboTamanho_Nsg, jChbRetirar_Nsg);
-    Util.mensagem("incluido");
+    Util.mensagem("incluído");
     }//GEN-LAST:event_jBtnIncluir_NsgActionPerformed
 
     private void jBtnCancelar_NsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelar_NsgActionPerformed

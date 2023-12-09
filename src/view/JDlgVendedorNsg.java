@@ -36,6 +36,11 @@ public class JDlgVendedorNsg extends javax.swing.JDialog {
         vendedorControleNsg.setList(lista);
         jTable1.setModel(vendedorControleNsg);
     }
+    
+    public int getSelectedRowProd() {
+        return jTable1.getSelectedRow();
+    
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -136,21 +141,23 @@ public class JDlgVendedorNsg extends javax.swing.JDialog {
         
         jDlgVendedorIANsg.setTitle("Incluir");
         jDlgVendedorIANsg.setVisible(true);
+        
+        List lista = vendedor_DAO_Nsg.listAll();
+        vendedorControleNsg.setList(lista);
     }//GEN-LAST:event_jBtnIncluir_NsgActionPerformed
 
     private void jBtnAlterar_NsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterar_NsgActionPerformed
         // TODO add your handling code here:
+        jDlgVendedorIANsg.setTitle("Alterar");
+          
         int sel = jTable1.getSelectedRow();
-        incluindo = false;
         
         VendedorNsg vendedorNsg = vendedorControleNsg.getBean(sel);
         jDlgVendedorIANsg.beanView(vendedorNsg);
         
-        this.jDlgVendedorIANsg.setTitle("Alterar");
-        jDlgVendedorIANsg.setVisible(true);
-        
-        jDlgVendedorIANsg.setTitle("Alterar");
-        jDlgVendedorIANsg.setVisible(true);
+        jDlgVendedorIANsg.setVisible(true); 
+         List lista = vendedor_DAO_Nsg.listAll();
+          vendedorControleNsg.setList(lista);
     }//GEN-LAST:event_jBtnAlterar_NsgActionPerformed
 
     private void jBtnExcluir_NsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluir_NsgActionPerformed
@@ -164,6 +171,9 @@ public class JDlgVendedorNsg extends javax.swing.JDialog {
         } else{
             Util.mensagem("Exclusão cancelada");
         }
+        
+        List lista = vendedor_DAO_Nsg.listAll();
+        vendedorControleNsg.setList(lista);
     }//GEN-LAST:event_jBtnExcluir_NsgActionPerformed
 
     /**

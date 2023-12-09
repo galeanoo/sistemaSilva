@@ -217,7 +217,7 @@
         <Component class="javax.swing.JButton" name="jBtnToolBarCliente_Nsg">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagens/09 - cliente.png"/>
+              <Image iconType="3" name="/imagens/08 - usuario.png"/>
             </Property>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -241,7 +241,7 @@
         <Component class="javax.swing.JButton" name="jBtnToolBarProduto_Nsg">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagens/14 - compra.png"/>
+              <Image iconType="3" name="/imagens/09 - cliente.png"/>
             </Property>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -265,7 +265,7 @@
         <Component class="javax.swing.JButton" name="jBtnToolBarUsuario_Nsg">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagens/08 - usuario.png"/>
+              <Image iconType="3" name="/imagens/12 - caixa.png"/>
             </Property>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -289,7 +289,7 @@
         <Component class="javax.swing.JButton" name="jBtnToolBarVendedor_Nsg">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagens/13 - venda.png"/>
+              <Image iconType="3" name="/imagens/14 - compra.png"/>
             </Property>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -313,7 +313,7 @@
         <Component class="javax.swing.JButton" name="jBtnToolBarVenda_Nsg">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagens/12 - caixa.png"/>
+              <Image iconType="3" name="/imagens/13 - venda.png"/>
             </Property>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -328,6 +328,9 @@
             </Property>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnToolBarVenda_NsgActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JToolBar$Separator" name="jSeparator6">
         </Component>

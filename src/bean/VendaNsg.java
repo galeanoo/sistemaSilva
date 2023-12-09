@@ -31,14 +31,14 @@ public class VendaNsg  implements java.io.Serializable {
      private ClienteNsg clienteNsg;
      private VendedorNsg vendedorNsg;
      private Date dataNsg;
-     private String totalVendaNsg;
+     private double totalVendaNsg;
      private String unidadeNsg;
 
     public VendaNsg() {
     }
 
 	
-    public VendaNsg(int idVendaNsg, ClienteNsg clienteNsg, VendedorNsg vendedorNsg, Date dataNsg, String totalVendaNsg, String unidadeNsg) {
+    public VendaNsg(int idVendaNsg, ClienteNsg clienteNsg, VendedorNsg vendedorNsg, Date dataNsg, double totalVendaNsg, String unidadeNsg) {
         this.idVendaNsg = idVendaNsg;
         this.clienteNsg = clienteNsg;
         this.vendedorNsg = vendedorNsg;
@@ -59,7 +59,7 @@ public class VendaNsg  implements java.io.Serializable {
         this.idVendaNsg = idVendaNsg;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="cliente_nsg", nullable=false)
     public ClienteNsg getClienteNsg() {
         return this.clienteNsg;
@@ -69,7 +69,7 @@ public class VendaNsg  implements java.io.Serializable {
         this.clienteNsg = clienteNsg;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="vendedor_nsg", nullable=false)
     public VendedorNsg getVendedorNsg() {
         return this.vendedorNsg;
@@ -91,11 +91,11 @@ public class VendaNsg  implements java.io.Serializable {
 
     
     @Column(name="total_venda_nsg", nullable=false, length=80)
-    public String getTotalVendaNsg() {
+    public double getTotalVendaNsg() {
         return this.totalVendaNsg;
     }
     
-    public void setTotalVendaNsg(String totalVendaNsg) {
+    public void setTotalVendaNsg(double totalVendaNsg) {
         this.totalVendaNsg = totalVendaNsg;
     }
     

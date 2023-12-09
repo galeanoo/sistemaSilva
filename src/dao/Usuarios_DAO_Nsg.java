@@ -21,8 +21,8 @@ public class Usuarios_DAO_Nsg extends DAO_Abstract {
     public UsuariosNsg Login(String usuario, String senha) {
         session.beginTransaction();
 
-        Query query = session.createQuery("FROM UsuariosNsg WHERE nome_Nsg = :nome_Nsg AND senha_Nsg = :senha_Nsg");
-        query.setParameter("nome_Nsg", usuario);
+        Query query = session.createQuery("FROM UsuariosNsg WHERE apelido_Nsg = :apelido_Nsg AND senha_Nsg = :senha_Nsg");
+        query.setParameter("apelido_Nsg", usuario);
         query.setParameter("senha_Nsg", senha);
 
         UsuariosNsg usuariosNsg = (UsuariosNsg) query.uniqueResult();

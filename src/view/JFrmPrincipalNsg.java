@@ -25,6 +25,7 @@ public class JFrmPrincipalNsg extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Menu");
+        setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**
@@ -69,7 +70,7 @@ public class JFrmPrincipalNsg extends javax.swing.JFrame {
         jToolBar1.setRollover(true);
         jToolBar1.add(jSeparator1);
 
-        jBtnToolBarCliente_Nsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/09 - cliente.png"))); // NOI18N
+        jBtnToolBarCliente_Nsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/08 - usuario.png"))); // NOI18N
         jBtnToolBarCliente_Nsg.setFocusable(false);
         jBtnToolBarCliente_Nsg.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jBtnToolBarCliente_Nsg.setMaximumSize(new java.awt.Dimension(60, 45));
@@ -84,7 +85,7 @@ public class JFrmPrincipalNsg extends javax.swing.JFrame {
         jToolBar1.add(jBtnToolBarCliente_Nsg);
         jToolBar1.add(jSeparator2);
 
-        jBtnToolBarProduto_Nsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/14 - compra.png"))); // NOI18N
+        jBtnToolBarProduto_Nsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/09 - cliente.png"))); // NOI18N
         jBtnToolBarProduto_Nsg.setFocusable(false);
         jBtnToolBarProduto_Nsg.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jBtnToolBarProduto_Nsg.setMaximumSize(new java.awt.Dimension(60, 45));
@@ -99,7 +100,7 @@ public class JFrmPrincipalNsg extends javax.swing.JFrame {
         jToolBar1.add(jBtnToolBarProduto_Nsg);
         jToolBar1.add(jSeparator3);
 
-        jBtnToolBarUsuario_Nsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/08 - usuario.png"))); // NOI18N
+        jBtnToolBarUsuario_Nsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/12 - caixa.png"))); // NOI18N
         jBtnToolBarUsuario_Nsg.setFocusable(false);
         jBtnToolBarUsuario_Nsg.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jBtnToolBarUsuario_Nsg.setMaximumSize(new java.awt.Dimension(60, 45));
@@ -114,7 +115,7 @@ public class JFrmPrincipalNsg extends javax.swing.JFrame {
         jToolBar1.add(jBtnToolBarUsuario_Nsg);
         jToolBar1.add(jSeparator4);
 
-        jBtnToolBarVendedor_Nsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/13 - venda.png"))); // NOI18N
+        jBtnToolBarVendedor_Nsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/14 - compra.png"))); // NOI18N
         jBtnToolBarVendedor_Nsg.setFocusable(false);
         jBtnToolBarVendedor_Nsg.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jBtnToolBarVendedor_Nsg.setMaximumSize(new java.awt.Dimension(60, 45));
@@ -129,13 +130,18 @@ public class JFrmPrincipalNsg extends javax.swing.JFrame {
         jToolBar1.add(jBtnToolBarVendedor_Nsg);
         jToolBar1.add(jSeparator5);
 
-        jBtnToolBarVenda_Nsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/12 - caixa.png"))); // NOI18N
+        jBtnToolBarVenda_Nsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/13 - venda.png"))); // NOI18N
         jBtnToolBarVenda_Nsg.setFocusable(false);
         jBtnToolBarVenda_Nsg.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jBtnToolBarVenda_Nsg.setMaximumSize(new java.awt.Dimension(60, 45));
         jBtnToolBarVenda_Nsg.setMinimumSize(new java.awt.Dimension(60, 45));
         jBtnToolBarVenda_Nsg.setPreferredSize(new java.awt.Dimension(60, 45));
         jBtnToolBarVenda_Nsg.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBtnToolBarVenda_Nsg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnToolBarVenda_NsgActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jBtnToolBarVenda_Nsg);
         jToolBar1.add(jSeparator6);
 
@@ -283,8 +289,8 @@ public class JFrmPrincipalNsg extends javax.swing.JFrame {
 
     private void jMnuVendaNsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuVendaNsgActionPerformed
         // TODO add your handling code here:
-//        JDlgVendaNsg jDlgVendaNsg = new JDlgVendaNsg(null, true);
-//        jDlgVendaNsg.setVisible(true);
+        JDlgVendaNsg jDlgVendaNsg = new JDlgVendaNsg(null, true);
+        jDlgVendaNsg.setVisible(true);
     }//GEN-LAST:event_jMnuVendaNsgActionPerformed
 
     private void jMnuVendedorNsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuVendedorNsgActionPerformed
@@ -301,26 +307,26 @@ public class JFrmPrincipalNsg extends javax.swing.JFrame {
 
     private void jBtnToolBarCliente_NsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnToolBarCliente_NsgActionPerformed
         // TODO add your handling code here:
-        JDlgClienteNsg jDlgClienteNsg = new JDlgClienteNsg(null, true);
-        jDlgClienteNsg.setVisible(true);
+        JDlgUsuariosNsg jDlgUsuariosNsg = new JDlgUsuariosNsg(null, true);
+        jDlgUsuariosNsg.setVisible(true);
     }//GEN-LAST:event_jBtnToolBarCliente_NsgActionPerformed
 
     private void jBtnToolBarProduto_NsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnToolBarProduto_NsgActionPerformed
         // TODO add your handling code here:
-        JDlgProdutoNsg jDlgProdutoNsg = new JDlgProdutoNsg(null, true);
-        jDlgProdutoNsg.setVisible(true);
+        JDlgConsultaUsuariosNsg jDlgConsultaUsuariosNsg = new JDlgConsultaUsuariosNsg(null, true);
+        jDlgConsultaUsuariosNsg.setVisible(true);
     }//GEN-LAST:event_jBtnToolBarProduto_NsgActionPerformed
 
     private void jBtnToolBarUsuario_NsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnToolBarUsuario_NsgActionPerformed
         // TODO add your handling code here:
-        JDlgUsuariosNsg jDlgUsuariosNsg = new JDlgUsuariosNsg(null, true);
-        jDlgUsuariosNsg.setVisible(true);
+        JDlgVendaNsg jDlgVendaNsg = new JDlgVendaNsg(null, true);
+        jDlgVendaNsg.setVisible(true);
     }//GEN-LAST:event_jBtnToolBarUsuario_NsgActionPerformed
 
     private void jBtnToolBarVendedor_NsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnToolBarVendedor_NsgActionPerformed
         // TODO add your handling code here:
-        JDlgVendedorNsg jDlgVendedorNsg = new JDlgVendedorNsg(null, true);
-        jDlgVendedorNsg.setVisible(true);
+        JDlgConsultaVendaNsg jDlgConsultaVendaNsg = new JDlgConsultaVendaNsg(null, true);
+        jDlgConsultaVendaNsg.setVisible(true);
     }//GEN-LAST:event_jBtnToolBarVendedor_NsgActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -352,6 +358,12 @@ public class JFrmPrincipalNsg extends javax.swing.JFrame {
         JDlgConsultaVendaNsg jDlgConsultaVendaNsg = new JDlgConsultaVendaNsg(null, true);
         jDlgConsultaVendaNsg.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jBtnToolBarVenda_NsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnToolBarVenda_NsgActionPerformed
+        // TODO add your handling code here:
+        JDlgConsultaVendedorNsg jDlgConsultaVendedorNsg = new JDlgConsultaVendedorNsg(null, true);
+        jDlgConsultaVendedorNsg.setVisible(true);
+    }//GEN-LAST:event_jBtnToolBarVenda_NsgActionPerformed
 
     /**
      * @param args the command line arguments

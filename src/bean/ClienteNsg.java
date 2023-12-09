@@ -236,7 +236,7 @@ public class ClienteNsg  implements java.io.Serializable {
     if (object instanceof ClienteNsg) {
         ClienteNsg clienteNsg = (ClienteNsg) object;
         
-        if (this.getNomeNsg() == clienteNsg.getNomeNsg()){
+        if (this.getIdClienteNsg()== clienteNsg.getIdClienteNsg()){
             return true;
         }
     }

@@ -10,6 +10,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
+import tools.Util;
 
 /**
  *
@@ -60,16 +61,16 @@ public class Venda_DAO_Nsg extends DAO_Abstract {
         session.getTransaction().commit();
         return lista;
     }
-    public List listTotal(String totalVendaNsg) {
+    public List listTotal(Double totalVendaNsg) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(VendaNsg.class);
-        criteria.add(Restrictions.ilike("totalVendaNsg", totalVendaNsg, MatchMode.ANYWHERE));
+        criteria.add(Restrictions.ge("totalVendaNsg", totalVendaNsg));
         List results = criteria.list();
         session.getTransaction().commit();
         return results;
     }
     
-    public List listUnidade(int unidadeNsg) {
+    public List listUnidade(String unidadeNsg) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(VendaNsg.class);
         criteria.add(Restrictions.ge("unidadeNsg", unidadeNsg));
@@ -78,10 +79,10 @@ public class Venda_DAO_Nsg extends DAO_Abstract {
         return results;
     }
     
-    public List listTotalUnidade(String totalVendaNsg, int unidadeNsg) {
+    public List listTotalUnidade(Double totalVendaNsg, String unidadeNsg) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(VendaNsg.class);
-        criteria.add(Restrictions.ilike("totalVendaNsg", totalVendaNsg, MatchMode.ANYWHERE));
+        criteria.add(Restrictions.ge("totalVendaNsg", totalVendaNsg));
         criteria.add(Restrictions.ge("unidadeNsg", unidadeNsg));
         List results = criteria.list();
         session.getTransaction().commit();

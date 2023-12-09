@@ -111,7 +111,7 @@ public class VendedorNsg  implements java.io.Serializable {
     if (object instanceof VendedorNsg) {
         VendedorNsg vendedorNsg = (VendedorNsg) object;
         
-        if (this.getNomeNsg() == vendedorNsg.getNomeNsg()){
+        if (this.getIdVendedorNsg() == vendedorNsg.getIdVendedorNsg()){
             return true;
         }
     }
